@@ -4,15 +4,18 @@ let paper = "Paper";
 let scissors = "Scissors";
 let humanScore = 0;
 let computerScore = 0;
+let humanChoice;
+let computerChoice;
+
 
 function getComputerChoice() {
-    let computerChoice = Math.floor(Math.random() * 3) + 1;
+    let randomNumber = Math.floor(Math.random() * 3) + 1;
 
-    if (computerChoice === 1) {
+    if (randomNumber === 1) {
         return rock;
-    } else if (computerChoice === 2) {
+    } else if (randomNumber === 2) {
         return paper;
-    } else if (computerChoice === 3) {
+    } else if (randomNumber === 3) {
         return scissors;
     }
 }
@@ -20,11 +23,11 @@ function getComputerChoice() {
 
 
 function getHumanChoice() {
-    let humanChoice = prompt("please enter Rock, Paper or Scissors : ");
+    let humanAnswer = prompt("please enter Rock, Paper or Scissors : ");
 
-    if (humanChoice === rock || humanChoice === paper || humanChoice === scissors) {
-        return console.log(humanChoice);
-    } else {
+    if (humanAnswer === rock || humanAnswer === paper || humanAnswer === scissors) {
+        return console.log(humanAnswer);
+    } else  {
         return console.log("eingabe ungültig");
     }
 
@@ -37,5 +40,6 @@ function playRound(humanChoice, computerChoice) {
 
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
+
 
 playRound(humanSelection, computerSelection);
