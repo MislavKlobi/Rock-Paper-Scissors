@@ -25,10 +25,12 @@ function getComputerChoice() {
 function getHumanChoice() {
     humanChoice;
 
-    if (humanChoice === rock.toLowerCase() || humanChoice === paper.toLowerCase() || humanChoice === scissors.toLowerCase()) {
-        return console.log("Spieler: " + humanChoice);
+    if (humanChoice === rock || humanChoice === paper || humanChoice === scissors) {    // .toLowerCase() makes all chars to lower case 
+        console.log("Spieler: " + humanChoice.toLowerCase());
+        return humanChoice;
     } else {
-        return console.log("eingabe ungültig");
+        console.log("eingabe ungültig");
+        return null;
     }
 
 }
@@ -36,20 +38,31 @@ function getHumanChoice() {
 
 function playRound(humanChoice, computerChoice) {
      if (humanChoice === computerChoice){
-        return console.log("Wow, it's a draw ");
+        console.log(`Wow, it's a draw ${humanChoice}`);
+        return;
     }
     
-    if ((humanChoice === rock && computerChoice === scissors) ||
-        (humanChoice === paper && computerChoice === rock) ||
-        (humanChoice === scissors && computerChoice === paper)
+    if ((humanChoice === "rock" && computerChoice === "scissors") ||
+        (humanChoice === "paper" && computerChoice === "rock") ||
+        (humanChoice === "scissors" && computerChoice === "paper")
     ) {
-        return console.log("You Win! ${humanChoice} + ");
+        humanScore++;
+        console.log(`You Win! ${humanChoice} beats ${computerChoice}`);
+    } else {
+        computerScore++;
+        console.log(`You Lose! ${computerChoice} beats ${humanChoice}`);
     }
 }
+
+
+
+
 
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 
 
 playRound(humanSelection, computerSelection);
+
 console.log("Compuer: " + getComputerChoice());
+console.log("Score: " + "Human: " + humanScore + " " + "Computer: " + computerScore);
