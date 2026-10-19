@@ -1,21 +1,21 @@
-console.log("Hello World!");
-let rock = "Rock";
-let paper = "Paper";
-let scissors = "Scissors";
+let rock = "rock";
+let paper = "paper";
+let scissors = "scissors";
+let computerChoice = Math.floor(Math.random() * 3) + 1;
+let humanChoice = prompt("please enter Rock, Paper or Scissors : ").toLowerCase();
 let humanScore = 0;
 let computerScore = 0;
-let humanChoice;
-let computerChoice;
+
 
 
 function getComputerChoice() {
-    let randomNumber = Math.floor(Math.random() * 3) + 1;
+    computerChoice;
 
-    if (randomNumber === 1) {
+    if (computerChoice === 1) {
         return rock;
-    } else if (randomNumber === 2) {
+    } else if (computerChoice === 2) {
         return paper;
-    } else if (randomNumber === 3) {
+    } else if (computerChoice === 3) {
         return scissors;
     }
 }
@@ -23,11 +23,11 @@ function getComputerChoice() {
 
 
 function getHumanChoice() {
-    let humanAnswer = prompt("please enter Rock, Paper or Scissors : ");
+    humanChoice;
 
-    if (humanAnswer === rock || humanAnswer === paper || humanAnswer === scissors) {
-        return console.log(humanAnswer);
-    } else  {
+    if (humanChoice === rock.toLowerCase() || humanChoice === paper.toLowerCase() || humanChoice === scissors.toLowerCase()) {
+        return console.log("Spieler: " + humanChoice);
+    } else {
         return console.log("eingabe ungültig");
     }
 
@@ -35,7 +35,16 @@ function getHumanChoice() {
 
 
 function playRound(humanChoice, computerChoice) {
-
+     if (humanChoice === computerChoice){
+        return console.log("Wow, it's a draw ");
+    }
+    
+    if ((humanChoice === rock && computerChoice === scissors) ||
+        (humanChoice === paper && computerChoice === rock) ||
+        (humanChoice === scissors && computerChoice === paper)
+    ) {
+        return console.log("You Win! ${humanChoice} + ");
+    }
 }
 
 const humanSelection = getHumanChoice();
@@ -43,3 +52,4 @@ const computerSelection = getComputerChoice();
 
 
 playRound(humanSelection, computerSelection);
+console.log(getComputerChoice());
