@@ -52,4 +52,4 @@ const computerSelection = getComputerChoice();
 
 
 playRound(humanSelection, computerSelection);
-console.log(getComputerChoice());
+console.log("Compuer: " + getComputerChoice());
