@@ -21,7 +21,7 @@ function getComputerChoice() {
 
 function getHumanChoice() {
     let humanChoice = prompt("please enter Rock, Paper or Scissors : ").toLowerCase();
-    if(!humanChoice) return null;
+    if (!humanChoice) return null;
 
     if (humanChoice === rock || humanChoice === paper || humanChoice === scissors) {    // .toLowerCase() makes all chars to lower case 
         console.log("Spieler: " + humanChoice.toLowerCase());
@@ -33,7 +33,7 @@ function getHumanChoice() {
 
 }
 
-function playGame(humanChoice, computerChoice) {
+function playGame() {
     let humanScore = 0;
     let computerScore = 0;
 
@@ -54,17 +54,27 @@ function playGame(humanChoice, computerChoice) {
             console.log(`You Lose! ${computerChoice} beats ${humanChoice}`);
         }
     }
-    playRound(humanChoice, computerChoice);
-    console.log("Score: " + "Human: " + humanScore + " " + "Computer: " + computerScore);
+    for (let i = 1; i <= 5; i++) {
+        console.log(`--- Round ${i} ---`);
+
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+        
+        console.log("Computer: " + computerSelection);
+
+        playRound(humanSelection, computerSelection);
+        
+        console.log("Score: " + "Human: " + humanScore + " " + "Computer: " + computerScore);
+    }
+
+    if(humanScore > computerScore){
+        console.log("You Won!");
+    } else {
+        console.log("You Lost!");
+    }
     
+
 }
 
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-
-
-console.log("Computer: " + computerSelection);
-
-playGame(humanSelection, computerSelection);
+playGame();
